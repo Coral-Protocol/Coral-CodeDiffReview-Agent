@@ -9,7 +9,6 @@ from camel.types import ModelPlatformType, ModelType
 from camel.agents import ChatAgent
 import urllib.parse
 from dotenv import load_dotenv
-from langchain_groq import ChatGroq
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
