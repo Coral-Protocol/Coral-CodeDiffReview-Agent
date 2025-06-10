@@ -45,15 +45,8 @@ async def connect_client():
     # Initialize github_client
     github_token = os.getenv("GITHUB_ACCESS_TOKEN")
     github_client = MCPClient(
-        command_or_url="docker",
-        args=[
-            "run",
-            "-i",
-            "--rm",
-            "-e",
-            "GITHUB_PERSONAL_ACCESS_TOKEN",
-            "ghcr.io/github/github-mcp-server"
-        ],
+        command_or_url="npx",
+        args=['-y', '@modelcontextprotocol/server-github'],
         env={"GITHUB_PERSONAL_ACCESS_TOKEN": github_token},
         timeout=300.0
     )
@@ -95,18 +88,18 @@ async def create_codediff_agent(toolkit):
         These are the list of all tools: {tools_description}"""
     )
 
-    '''model = ModelFactory.create(
+    model = ModelFactory.create(
         model_platform=ModelPlatformType.OPENAI,
         model_type=ModelType.GPT_4_1,
         api_key=os.getenv("OPENAI_API_KEY"),
         model_config_dict={"temperature": 0.3, "max_tokens": 32147},
-    )'''
+    )
 
-    model = ModelFactory.create(
+    '''model = ModelFactory.create(
         model_platform=ModelPlatformType.GROQ,
         model_type=ModelType.GROQ_LLAMA_3_3_70B,
         model_config_dict={"temperature": 0.3},
-    )
+    )'''
     
     agent = ChatAgent(
         system_message=sys_msg,
