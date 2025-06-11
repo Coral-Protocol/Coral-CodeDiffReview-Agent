@@ -1,8 +1,8 @@
-### Responsibility
+## Responsibility
 
 Code diffs review agent can help you compare the files changed in a specific commit when you provide the repository name and PR number.
 
-### Details
+## Details
 
 * Framework: CAMEL-AI
 * Tools used: GitHub MCP Server Tools, Coral Server Tools
