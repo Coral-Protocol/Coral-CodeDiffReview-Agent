@@ -132,8 +132,9 @@ uv run 2-camel-CodeDiffReviewAgent.py
 
 Input:
 
+Send message to the interface agent:
+
 ```bash
-#Send message to the interface agent:
 Please get the code diffs for PR #2 in the repo `renxinxing123/camel-software-testing`
 ```
 
