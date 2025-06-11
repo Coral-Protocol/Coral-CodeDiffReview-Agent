@@ -10,30 +10,11 @@ Code diffs review agent can help you compare the files changed in a specific com
 * Date added: 02/05/25
 * Licence: MIT
 
-## Clone & Install Dependencies
+## Use the Agent
 
-1. Run [Coral Server](https://github.com/Coral-Protocol/coral-server)
-<details>
+### 1. Clone & Install Dependencies
 
-
-This agent runs on Coral Server, follow the instrcutions below to run the server. In a new terminal clone the repository:
-
-
-```bash
-git clone https://github.com/Coral-Protocol/coral-server.git
-```
-
-Navigate to the project directory:
-```bash
-cd coral-server
-```
-Run the server
-```bash
-./gradlew run
-```
-</details>
-
-2. Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
+Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
 <details>
 
 
@@ -69,7 +50,7 @@ uv run python 0-langchain-interface.py
 
 </details>
 
-3. Agent Installation
+Agent Installation
 
 <details>
 
@@ -102,7 +83,9 @@ This command will read the `pyproject.toml` file and install all specified depen
 
 </details>
 
-### Configure Environment Variables
+### 2. Configure Environment Variables
+
+<details>
 
 Copy the example file and update it with your credentials:
 
@@ -125,19 +108,31 @@ Required environment variables:
 * **GITHUB_ACCESS_TOKEN:**
   Log in to [github.com](https://github.com/), go to **Settings → Developer settings → Personal access tokens**, then “Generate new token,” select the required scopes, and copy the generated token.
 
+</details>
   
-## Run Agent
+### 3. Run Agent
+
+<details>
+  
 Run the agent using `uv`:
 ```bash
 uv run 2-camel-CodeDiffReviewAgent.py
 ```
 
-### Example Input/output
+</details>
+
+### 4. Example
+
+<details>
+
+Input:
 
 ```bash
 #Send message to the interface agent:
 Please get the code diffs for PR #2 in the repo `renxinxing123/camel-software-testing`
 ```
+
+Output:
 
 ```bash
 Here are the code diffs/changed files for PR #2 in the repo `renxinxing123/camel-software-testing`:
@@ -165,6 +160,8 @@ Here are the code diffs/changed files for PR #2 in the repo `renxinxing123/camel
 - The query parameter key was changed from `fields` to `wrong_key`.
 - The return value was changed from the response JSON to a hardcoded dictionary: `{ &quot;wrong_key&quot;: &quot;wrong_value&quot; }`.
 ```
+
+</details>
 
 ### Creator details
 
