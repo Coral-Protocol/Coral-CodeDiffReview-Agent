@@ -329,7 +329,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "camel-ai", extras = ["model-platforms"], specifier = "==0.2.58" },
+    { name = "camel-ai", extras = ["model-platforms"] },
     { name = "pillow", specifier = ">=11.2.1" },
     { name = "requests-oauthlib", specifier = ">=2.0.0" },
     { name = "sqlalchemy", specifier = ">=2.0.41" },
