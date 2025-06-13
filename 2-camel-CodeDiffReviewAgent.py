@@ -91,18 +91,18 @@ async def create_codediff_agent(toolkit):
         These are the list of all tools: {tools_description}"""
     )
 
-    model = ModelFactory.create(
+    '''model = ModelFactory.create(
         model_platform=ModelPlatformType.OPENAI,
         model_type=ModelType.GPT_4_1,
         api_key=os.getenv("OPENAI_API_KEY"),
         model_config_dict={"temperature": 0.3, "max_tokens": 32147},
-    )
+    )'''
 
-    '''model = ModelFactory.create(
+    model = ModelFactory.create(
         model_platform=ModelPlatformType.GROQ,
         model_type=ModelType.GROQ_LLAMA_3_3_70B,
         model_config_dict={"temperature": 0.3},
-    )'''
+    )
     
     agent = ChatAgent(
         system_message=sys_msg,
