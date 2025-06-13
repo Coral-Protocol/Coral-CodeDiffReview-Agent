@@ -12,52 +12,13 @@ The CodeDiffReview Agent automates code diff review for pull requests, making it
 - **Date added**: 02/05/25
 - **License**: MIT
 
-## Use the Agent
+## Use the Agent  
 
-### 1. Run Coral Server
-<details>
+### 1. Clone & Install Dependencies
 
-Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system. In a new terminal, clone the repository:
+<details>  
 
-```bash
-# Clone the Coral Server repository
-git clone https://github.com/Coral-Protocol/coral-server.git
-
-# Navigate to the project directory
-cd coral-server
-
-# Run the server
-./gradlew run
-```
-</details>
-
-### 2. Run [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent)
-<details>
-
-The Interface Agent is required to interact with the CodeDiffReview Agent. In a new terminal, clone the repository:
-
-```bash
-# Clone the Interface Agent repository
-git clone https://github.com/Coral-Protocol/Coral-Interface-Agent.git
-
-# Navigate to the project directory
-cd Coral-Interface-Agent
-
-# Install `uv`:
-pip install uv
-
-# Install dependencies from `pyproject.toml` using `uv`:
-uv sync
-
-# Run the agent using `uv`:
-uv run python 0-langchain-interface.py
-```
-</details>
-
-### 3. Run CodeDiffReview Agent
-<details>
-
-In a new terminal, clone the repository:
+Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system and the [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) is running on the Coral Server.  
 
 ```bash
 # Clone the CodeDiffReview Agent repository
@@ -84,7 +45,7 @@ cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
 ```
 </details>
 
-### 4. Configure Environment Variables
+### 2. Configure Environment Variables
 <details>
 
 Get the API Keys:
@@ -106,7 +67,7 @@ Required environment variables:
 
 </details>
 
-### 5. Run Agent
+### 3. Run Agent
 <details>
 
 Run the agent using `uv`:
@@ -115,7 +76,7 @@ uv run 2-camel-CodeDiffReviewAgent.py
 ```
 </details>
 
-### 6. Example
+### 4. Example
 <details>
 
 ```bash
