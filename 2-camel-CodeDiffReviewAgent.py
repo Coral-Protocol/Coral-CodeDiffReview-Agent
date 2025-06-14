@@ -9,6 +9,9 @@ from camel.types import ModelPlatformType, ModelType
 from camel.agents import ChatAgent
 import urllib.parse
 from dotenv import load_dotenv
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="camel.toolkits.function_tool")
+
 
 PLATFORM_TYPE = "OPENAI"
 MODEL_TYPE = "GPT_4O_MINI"
