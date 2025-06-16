@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "camel-ai[model-platforms]",
+    "camel-ai[model-platforms]==0.2.66",
     "pillow>=11.2.1",
     "requests-oauthlib>=2.0.0",
     "sqlalchemy>=2.0.41",
