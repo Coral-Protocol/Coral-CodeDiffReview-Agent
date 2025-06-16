@@ -176,7 +176,7 @@ wheels = [
 
 [[package]]
 name = "camel-ai"
-version = "0.2.66"
+version = "0.2.58"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama" },
@@ -185,14 +185,13 @@ dependencies = [
     { name = "jsonschema" },
     { name = "mcp" },
     { name = "openai" },
-    { name = "pillow" },
     { name = "psutil" },
     { name = "pydantic" },
     { name = "tiktoken" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/da/62/de8075abab02a9a8300dd3c7fdf062b17edcac594a7012ea9552d9cb6e6e/camel_ai-0.2.66.tar.gz", hash = "sha256:56da671d2c24a7305fd894c9d30c3b4c32c6130b006449e48c9fedca1f4ac80e", size = 636448 }
+sdist = { url = "https://files.pythonhosted.org/packages/c0/a8/e49629a28970600c3cce414f7a593024730597e5a80d27850c5961e3f684/camel_ai-0.2.58.tar.gz", hash = "sha256:5bf77feeb48bfc965a3975b8e63c31d4ba7c1c65004ae2060df825b6ba499985", size = 572822 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/cb/d5/f8904479485fd720b027a2363f489fd28f7d3548e4b6f9ca9570d5243239/camel_ai-0.2.66-py3-none-any.whl", hash = "sha256:90511b1a241e7f25b70b7942726da4242ee8097ee9f10054e804ad511b2d3e1d", size = 1028944 },
+    { url = "https://files.pythonhosted.org/packages/f1/ff/e4489bcd8fe046146e9b63d29be050f332e4c37b965f390407dd7f444036/camel_ai-0.2.58-py3-none-any.whl", hash = "sha256:3f43d765444d2e49685adaabfab8d1872794a91da182bb9c02a07f7364cdabbb", size = 946235 },
 ]
 
 [package.optional-dependencies]
@@ -330,7 +329,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "camel-ai", extras = ["model-platforms"], specifier = "==0.2.66" },
+    { name = "camel-ai", extras = ["model-platforms"], specifier = "==0.2.58" },
     { name = "pillow" },
     { name = "requests-oauthlib" },
     { name = "sqlalchemy" },
