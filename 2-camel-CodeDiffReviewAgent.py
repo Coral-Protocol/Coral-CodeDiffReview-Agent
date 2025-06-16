@@ -44,9 +44,7 @@ async def connect_client():
     
     # Initialize coral_server client
     coral_server = MCPClient(
-        {
-            "url": MCP_SERVER_URL,
-        },
+        command_or_url=MCP_SERVER_URL,
         timeout=300.0
     )
     
