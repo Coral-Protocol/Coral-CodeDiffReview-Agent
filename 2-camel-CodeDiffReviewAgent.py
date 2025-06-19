@@ -29,7 +29,7 @@ if not os.getenv("OPENAI_API_KEY"):
 if not os.getenv("GITHUB_ACCESS_TOKEN"):
     raise ValueError("GITHUB_ACCESS_TOKEN is not set in environment variables.")
 
-base_url = "http://localhost:5555/devmode/exampleApplication/privkey/session1/sse"
+base_url = os.getenv("CORAL_SERVER_URL")
 params = {
     "waitForAgents": 1,
     "agentId": "codediff_review_agent",
@@ -124,7 +124,7 @@ async def main():
         agent = await create_codediff_agent(connected_toolkit)
         
         # Initial agent step
-        await agent.astep("Initializing codediff_review_agent, checking for mentions from other agents.")
+        await agent.astep("codediff_review_agent initialized.Awaiting instructions. Please list available server tools to confirm setup.")
         await asyncio.sleep(3)
         
         # Main agent loop
