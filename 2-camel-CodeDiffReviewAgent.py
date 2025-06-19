@@ -29,11 +29,15 @@ if not os.getenv("OPENAI_API_KEY"):
 if not os.getenv("GITHUB_ACCESS_TOKEN"):
     raise ValueError("GITHUB_ACCESS_TOKEN is not set in environment variables.")
 
+
+base_url = os.getenv("CORAL_SSE_URL")
+agentID = os.getenv("CORAL_AGENT_ID")
+
 base_url = "http://localhost:5555/devmode/exampleApplication/privkey/session1/sse"
 params = {
-    "waitForAgents": 1,
-    "agentId": "codediff_review_agent",
-    "agentDescription": """I am a `codediff_review_agent`, responsible for retrieving and formatting code diffs/changed files from a GitHub pull request. 
+    # "waitForAgents": 1,
+    "agentId": agentID,
+    "agentDescription": """An agent responsible for retrieving and formatting code diffs/changed files from a GitHub pull request. 
                            You should let me know the `repo_name` and `pr_number`"""
 }
 query_string = urllib.parse.urlencode(params)
