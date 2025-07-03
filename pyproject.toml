@@ -9,4 +9,5 @@ dependencies = [
     "pillow",
     "requests-oauthlib",
     "sqlalchemy",
+    "uv>=0.7.17",
 ]

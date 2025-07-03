@@ -1,8 +1,9 @@
 ## [Coral CodeDiffReview Agent](https://github.com/Coral-Protocol/Coral-CodeDiffReview-Agent)
-
+ 
 The CodeDiffReview Agent helps you compare the files changed in a specific commit when you provide the repository name and PR number.
 
 ## Responsibility
+
 The CodeDiffReview Agent automates code diff review for pull requests, making it easy to see what changed in a PR and summarize the impact.
 
 ## Details
@@ -12,73 +13,128 @@ The CodeDiffReview Agent automates code diff review for pull requests, making it
 - **Date added**: 02/05/25
 - **License**: MIT
 
-## Use the Agent  
+## Setup the Agent
 
 ### 1. Clone & Install Dependencies
 
 <details>  
 
-Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system and the [Interface Agent](https://github.com/Coral-Protocol/Coral-Interface-Agent) is running on the Coral Server.  
-
 ```bash
-# Clone the CodeDiffReview Agent repository
+# In a new terminal clone the repository:
 git clone https://github.com/Coral-Protocol/Coral-CodeDiffReview-Agent.git
 
-# Navigate to the project directory
+# Navigate to the project directory:
 cd Coral-CodeDiffReview-Agent
 
-# Install `uv`:
+# Download and run the UV installer, setting the installation directory to the current one
+curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=$(pwd) sh
+
+# Create a virtual environment named `.venv` using UV
+uv venv .venv
+
+# Activate the virtual environment
+source .venv/bin/activate
+
+# install uv
 pip install uv
 
 # Install dependencies from `pyproject.toml` using `uv`:
 uv sync
 ```
-This command will read the `pyproject.toml` file and install all specified dependencies in a virtual environment managed by `uv`.
-
-Copy the client sse.py from utils to mcp package (Linux/Mac):
-```bash
-cp -r utils/sse.py .venv/lib/python3.10/site-packages/mcp/client/sse.py
-```
-
-OR for Windows:
-```bash
-cp -r utils\sse.py .venv\Lib\site-packages\mcp\client\sse.py
-```
 
 </details>
 
 ### 2. Configure Environment Variables
+
+Get the API Key:
+[OpenAI](https://platform.openai.com/api-keys) or [GROQ](https://console.groq.com/keys)
+
 <details>
 
-Get the API Keys:
-- [OpenAI API Key](https://platform.openai.com/api-keys)
-- [Groq API Key](https://console.groq.com/keys)
-- [GitHub Personal Access Token](https://github.com/settings/tokens)
-
-Create a .env file in the project root:
 ```bash
+# Create .env file in project root
 cp -r .env.example .env
 ```
+</details>
 
-Add your API keys and any other required environment variables to the .env file.
+## Run the Agent
 
-Required environment variables:
-- `OPENAI_API_KEY`
-- `GROQ_API_KEY`
-- `GITHUB_ACCESS_TOKEN`
+You can run in either of the below modes to get your system running.  
+
+- The Executable Model is part of the Coral Protocol Orchestrator which works with [Coral Studio UI](https://github.com/Coral-Protocol/coral-studio).  
+- The Dev Mode allows the Coral Server and all agents to be seaprately running on each terminal without UI support.  
+
+### 1. Executable Mode
+
+Checkout: [How to Build a Multi-Agent System with Awesome Open Source Agents using Coral Protocol](https://github.com/Coral-Protocol/existing-agent-sessions-tutorial-private-temp) and update the file: `coral-server/src/main/resources/application.yaml` with the details below, then run the [Coral Server](https://github.com/Coral-Protocol/coral-server) and [Coral Studio UI](https://github.com/Coral-Protocol/coral-studio). You do not need to set up the `.env` in the project directory for running in this mode; it will be captured through the variables below.
+
+<details>
+
+For Linux or MAC:
+
+```bash
+# PROJECT_DIR="/PATH/TO/YOUR/PROJECT"
+
+applications:
+  - id: "app"
+    name: "Default Application"
+    description: "Default application for testing"
+    privacyKeys:
+      - "default-key"
+      - "public"
+      - "priv"
+
+registry:
+  CodeDiff:
+    options:
+      - name: "API_KEY"
+        type: "string"
+        description: "API key for the service"
+      - name: "GITHUB_ACCESS_TOKEN"
+        type: "string"
+        description: "key for the github service"
+    runtime:
+      type: "executable"
+      command: ["bash", "-c", "${PROJECT_DIR}/run_agent.sh main.py"]
+      environment:
+        - name: "API_KEY"
+          from: "API_KEY"
+        - name: "GITHUB_ACCESS_TOKEN"
+          from: "GITHUB_ACCESS_TOKEN"
+        - name: "MODEL_NAME"
+          value: "gpt-4.1"
+        - name: "MODEL_PROVIDER"
+          value: "openai"
+        - name: "MODEL_TOKEN"
+          value: "16000"
+        - name: "MODEL_TEMPERATURE"
+          value: "0.3"
+
+```
+
+For Windows, create a powershell command (run_agent.ps1) and run:
+
+```bash
+command: ["powershell","-ExecutionPolicy", "Bypass", "-File", "${PROJECT_DIR}/run_agent.ps1","main.py"]
+```
 
 </details>
 
-### 3. Run Agent
+### 2. Dev Mode
+
+Ensure that the [Coral Server](https://github.com/Coral-Protocol/coral-server) is running on your system and run below command in a separate terminal.
+
 <details>
 
-Run the agent using `uv`:
 ```bash
-uv run 2-camel-CodeDiffReviewAgent.py
+# Run the agent using `uv`:
+uv run python main.py
 ```
 </details>
 
-### 4. Example
+
+## Example
+
 <details>
 
 ```bash
@@ -111,7 +167,9 @@ Here are the code diffs/changed files for PR #2 in the repo `renxinxing123/camel
 - The query parameter key was changed from `fields` to `wrong_key`.
 - The return value was changed from the response JSON to a hardcoded dictionary: `{ "wrong_key": "wrong_value" }`.
 ```
+
 </details>
+
 
 ## Creator Details
 - **Name**: Xinxing
