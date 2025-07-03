@@ -102,7 +102,7 @@ registry:
         - name: "GITHUB_ACCESS_TOKEN"
           from: "GITHUB_ACCESS_TOKEN"
         - name: "MODEL_NAME"
-          value: "gpt-4.1"
+          value: "gpt-4.1-2025-04-14"
         - name: "MODEL_PROVIDER"
           value: "openai"
         - name: "MODEL_TOKEN"
