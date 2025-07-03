@@ -10,7 +10,7 @@ import urllib.parse
 from dotenv import load_dotenv
 import json
 
-load_dotenv()
+load_dotenv(override=True)
 
 base_url = os.getenv("CORAL_SSE_URL")
 agentID = os.getenv("CORAL_AGENT_ID")
