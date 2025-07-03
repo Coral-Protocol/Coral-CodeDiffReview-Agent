@@ -6,5 +6,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "camel-ai[model-platforms]==0.2.70",
+    "mcp==1.10.1",
     "uv>=0.7.17",
 ]
